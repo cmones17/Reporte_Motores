@@ -1,0 +1,41 @@
+#define EM1 8 
+#define IM1 10    
+#define IM2 9    
+#define EM2 7  
+#define IM3 6     
+#define IM4 5 
+
+void setup()
+   {
+        pinMode(8,OUTPUT);
+ 		pinMode(9,OUTPUT);
+		pinMode(10,OUTPUT);
+  		pinMode(5,OUTPUT);
+ 		pinMode(6,OUTPUT);
+		pinMode(7,OUTPUT);
+  		pinMode(A0,INPUT);
+   }
+void loop()
+   {
+  		int val;
+  		val=analogRead(A0);
+  		val = map(val, 0, 1023, 0, 250);
+    	//digitalWrite(EM2, HIGH);     EJERCICIO 2
+        //analogWrite(IM4, 0);     EJERCICIO 2
+        //analogWrite(IM3, val);     EJERCICIO 2
+        //delay(3000);              EJERCICIO 2
+  if(val<130&&val>120){
+    digitalWrite(EM1, LOW);
+  }else{
+    if(val<124){
+      digitalWrite(EM1, HIGH);     
+      analogWrite(IM1, val+250);     
+      analogWrite(IM2, 0);
+    }else{
+      if(val>124){
+        digitalWrite(EM1, HIGH);     
+      analogWrite(IM1, 0);     
+      analogWrite(IM2, val);
+      }
+    }
+  }
